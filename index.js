@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 //importing mongo db client
 // var MongoClient = require("mongodb").MongoClient;
-// var CONNECTION_STRING = "mongodb+srv://shubham016:qwerty_123@cluster0.prcsoe8.mongodb.net/?retryWrites=true&w=majority"
+// var CONNECTION_STRING = "mongodb+srv://shubham016:@cluster0.prcsoe8.mongodb.net/?retryWrites=true&w=majority"
 
 // var DATABASE = "testdb";
 // var database;
@@ -35,14 +35,6 @@ mongoose.connect('mongodb://localhost:27017/Employee' , { useNewUrlParser : true
         .then(() => {console.log("Connected to mongodb........")})
         .catch(err => console.error("Error in Connection....",err));
 
-const emp = {
-    id : "SHLLI8812129",
-    name: "Shubham",
-    email: "shubu@gangotrimail.com",
-    password: "yetotattihai"
-}
-
-EmployeeDAO.saveEmployee(emp);
 
 //using get method
 app.get('/', (request, response)=>{
