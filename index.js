@@ -2,6 +2,7 @@
 var Express = require("express");
 var bodyParser = require("body-parser");
 
+
 //creaing instance of Express 
 var app = Express();
 
@@ -9,6 +10,15 @@ var app = Express();
 app.use(bodyParser.json());
 //data can be inserted using url from here
 app.use(bodyParser.urlencoded({extended:true}));
+
+
+//importing dependencies for file upload
+var fileUpload =  require("express-fileupload");
+//importing file system
+var fs = require("fs");
+//instantiating file upload
+app.use(fileUpload);
+app.use('/EmployeePic', Express.static(__dirname + '/EmployeePic'));
 
 
 //importing moongoose as database client 
@@ -146,7 +156,15 @@ app.delete('/api/department/:departmentId', (request, response)=>{
     
 })
 
-
+//function to upload a file
+app.post('/api/employee/savefile', (request, response)=>{
+    fs.writeFile("./EmployeePic/"+request.files.file.name,
+    request.files.file.data, function(err){
+        if(err)
+            console.log(err);
+        response.send(request.files.file.name);
+    })
+})
 
 
 
