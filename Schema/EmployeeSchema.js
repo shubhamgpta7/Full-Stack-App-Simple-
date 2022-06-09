@@ -1,10 +1,11 @@
+//Require mongoose
 const mongoose =  require('mongoose');
 
+
 const EmployeeSchema = new mongoose.Schema({
-    id : String,
-    name : String,
-    email : String,
-    password : String 
+    employeeId : String,
+    employeeName : String,
+    doj : String 
 });
 
 module.exports = mongoose.model('Employee',EmployeeSchema);
