@@ -21,6 +21,10 @@ app.use(fileUpload);
 app.use('/EmployeePic', Express.static(__dirname + '/EmployeePic'));
 
 
+//Enable CORS 
+var cors = require("cors");
+app.use(cors());
+
 //importing moongoose as database client 
 const mongoose = require('mongoose');
 const { response } = require("express");
